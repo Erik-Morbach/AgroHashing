@@ -2,5 +2,5 @@
 
 template<typename T>
 struct Hashable {
-	virtual unsigned long long int hash() = 0;
+	virtual unsigned long long int hash() const = 0;
 };

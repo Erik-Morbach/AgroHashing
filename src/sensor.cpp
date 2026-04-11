@@ -34,6 +34,10 @@ void Sensor::print() const {
     cout << "-------------------------" << endl;
 }
 
-unsigned long long int Sensor::hash() {
+unsigned long long int Sensor::hash() const{
     return this->iId;
+}
+
+bool Sensor::operator==(const Sensor &oth) const {
+    return this->iId == oth.iId;
 }

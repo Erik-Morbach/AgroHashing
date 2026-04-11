@@ -18,5 +18,6 @@ public:
     void setReading(double dReading);
     int getId() const;
     void print() const;
-    virtual unsigned long long int hash();
+    virtual unsigned long long int hash() const;
+    bool operator==(const Sensor &oth) const;
 };
