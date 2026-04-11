@@ -1,9 +1,10 @@
 #pragma once
+#include "hashable.hpp"
 
 #include <string>
 using namespace std;
 
-class Sensor {
+class Sensor: public Hashable<Sensor> {
 private:
     int iId;
     string strType;
@@ -17,4 +18,5 @@ public:
     void setReading(double dReading);
     int getId() const;
     void print() const;
+    virtual unsigned long long int hash();
 };
