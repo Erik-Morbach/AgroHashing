@@ -13,6 +13,7 @@ private:
 
 public:
     Sensor();
+    Sensor(const Sensor &oth);
     Sensor(int iIdParam, string strTypeParam, string strLocationParam);
 
     void setReading(double dReading);
@@ -20,4 +21,5 @@ public:
     void print() const;
     virtual unsigned long long int hash() const;
     bool operator==(const Sensor &oth) const;
+    string str() const;
 };
