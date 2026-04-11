@@ -1,10 +1,11 @@
 #pragma once
 #include <vector>
+#include <memory>
 
 template<typename T>
 struct HashTable {
-	virtual void add(T value);
-	virtual void remove(T value);
-	virtual T search(T key) const;
-	virtual std::vector<T> listAll() const;
+	virtual void add(T value) = 0;
+	virtual bool remove(T value) = 0;
+	virtual std::shared_ptr<T> search(T key) const = 0;
+	virtual std::vector<std::shared_ptr<T>> listAll() const = 0;
 };

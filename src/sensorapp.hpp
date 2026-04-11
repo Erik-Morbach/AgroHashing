@@ -1,13 +1,15 @@
 #pragma once
 #include "sensor.hpp"
-#include <vector>
+#include "hashTable.hpp"
+#include <memory>
 
 using namespace std;
 
 class SensorApp {
 private:
-    vector<Sensor> sensors;
+    std::shared_ptr<HashTable<Sensor>> table;
 public:
+    SensorApp();
     void registerSensor();
     void updateReading();
     void searchSensor();
