@@ -1,4 +1,4 @@
-#include "sensor.h"
+#include "sensor.hpp"
 #include <iostream>
 
 using namespace std;
@@ -32,4 +32,8 @@ void Sensor::print() const {
     cout << "Location: " << this->strLocation << endl;
     cout << "Last Reading: " << this->dLastReading << endl;
     cout << "-------------------------" << endl;
+}
+
+unsigned long long int Sensor::hash() {
+    return this->iId;
 }

@@ -1,4 +1,4 @@
-#include "sensorapp.h"
+#include "sensorapp.hpp"
 #include <iostream>
     
 void SensorApp::registerSensor() {

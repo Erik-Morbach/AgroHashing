@@ -5,4 +5,5 @@ add_executable(Main
     src/main.cpp
 	src/sensor.cpp
 	src/sensorapp.cpp
+	src/linkedHashTable.cpp
 	)
