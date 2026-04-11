@@ -1,5 +1,4 @@
-#ifndef SENSOR_H
-#define SENSOR_H
+#pragma once
 
 #include <string>
 using namespace std;
@@ -19,5 +18,3 @@ public:
     int getId() const;
     void print() const;
 };
-
-#endif
