@@ -1,5 +1,6 @@
 #pragma once
 #include "sensor.h"
+#include <vector>
 
 using namespace std;
 
