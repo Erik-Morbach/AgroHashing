@@ -1,8 +1,5 @@
 #include "sensorapp.h"
 #include <iostream>
-
-SensorApp::SensorApp() {
-}
     
 void SensorApp::registerSensor() {
     int iId;
