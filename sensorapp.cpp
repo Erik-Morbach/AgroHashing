@@ -1,69 +1,47 @@
 #include "sensorapp.h"
 #include <iostream>
 
-class SensorApp {
-private:
-    Sensor sensors[NUM_MAX_SENSORS];
-    int numSensors;
-
-public:
-
-    SensorApp() {
-        numSensors = 0;
-    }
+SensorApp::SensorApp() {
+}
     
-    void registerSensor() {
-        int iId;
-        string strType, strLocation;
+void SensorApp::registerSensor() {
+    int iId;
+    string strType, strLocation;
+    cout << "Enter Sensor ID: ";
+    cin >> iId;
+    cout << "Enter Sensor Type: ";
+    cin >> strType;
+    cout << "Enter Sensor Location: ";
+    cin >> strLocation;
+    cout << "Sensor registered successfully!" << endl;
+}
 
-        cout << "Enter Sensor ID: ";
-        cin >> iId;
+void SensorApp::updateReading() {
+    int iId;
+    double dReading;
+    cout << "Enter Sensor ID: ";
+    cin >> iId;
+    cout << "Enter new reading: ";
+    cin >> dReading;
+    cout << "Reading updated!" << endl;
+}
 
-        cout << "Enter Sensor Type: ";
-        cin >> strType;
+void SensorApp::searchSensor() {
+    int iId;
+    cout << "Enter Sensor ID: ";
+    cin >> iId;
+}
 
-        cout << "Enter Sensor Location: ";
-        cin >> strLocation;
+void SensorApp::removeSensor() {
+    int iId;
+    cout << "Enter Sensor ID: ";
+    cin >> iId;
+}
 
-        cout << "Sensor registered successfully!" << endl;
+void SensorApp::displaySensors() {
+    cout << "List of registred sensors: ";
+    for(Sensor sensor : this->sensors) {
+        sensor.print();
     }
 
-    void updateReading() {
-        int iId;
-        double dReading;
-
-        cout << "Enter Sensor ID: ";
-        cin >> iId;
-
-
-        cout << "Enter new reading: ";
-        cin >> dReading;
-
-        cout << "Reading updated!" << endl;
-    }
-
-    void searchSensor() {
-        int iId;
-
-        cout << "Enter Sensor ID: ";
-        cin >> iId;
-
-    }
-
-
-    void removeSensor() {
-        int iId;
-
-        cout << "Enter Sensor ID: ";
-        cin >> iId;
-
-    }
-
-    void displaySensors() {
-        cout << "List of registred sensors: ";
-        for(Sensor sensor : sensors) {
-            sensor.print();
-        }
-
-    }
-};
+}

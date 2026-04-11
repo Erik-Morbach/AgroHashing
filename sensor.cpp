@@ -3,40 +3,33 @@
 
 using namespace std;
 
-class Sensor {
-private:
-    int iId;
-    string strType;
-    string strLocation;
-    double dLastReading;
+Sensor::Sensor() {
+    this->iId = 0;
+    this->strType = "";
+    this->strLocation = "";
+    this->dLastReading = 0.0;
+}
 
-public:
-    Sensor() {
-        iId = 0;
-        strType = "";
-        strLocation = "";
-        dLastReading = 0.0;
-    }
-
-    Sensor(int iIdParam, string strTypeParam, string strLocationParam) {
-        iId = iIdParam;
-        strType = strTypeParam;
-        strLocation = strLocationParam;
-        dLastReading = 0.0;
-    }
+Sensor::Sensor(int iIdParam, string strTypeParam, string strLocationParam) {
+    this->iId = iIdParam;
+    this->strType = strTypeParam;
+    this->strLocation = strLocationParam;
+    this->dLastReading = 0.0;
+}
    
-    void setReading(double dReading) {
-        dLastReading = dReading;
-    }
+void Sensor::setReading(double dReading) {
+    this->dLastReading = dReading;
+}
 
-    int getId() const { return iId; }
+int Sensor::getId() const {
+    return this->iId;
+}
 
-    void print() const {
-        cout << "-------------------------" << endl;
-        cout << "ID: " << iId << endl;
-        cout << "Type: " << strType << endl;
-        cout << "Location: " << strLocation << endl;
-        cout << "Last Reading: " << dLastReading << endl;
-        cout << "-------------------------" << endl;
-    }
-};
+void Sensor::print() const {
+    cout << "-------------------------" << endl;
+    cout << "ID: " << this->iId << endl;
+    cout << "Type: " << this->strType << endl;
+    cout << "Location: " << this->strLocation << endl;
+    cout << "Last Reading: " << this->dLastReading << endl;
+    cout << "-------------------------" << endl;
+}
