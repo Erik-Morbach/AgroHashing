@@ -42,7 +42,7 @@ void Sensor::print() const {
 }
 
 unsigned long long int Sensor::hash() const{
-    return this->iId;
+    return this->iId*PRIMO;
 }
 
 bool Sensor::operator==(const Sensor &oth) const {

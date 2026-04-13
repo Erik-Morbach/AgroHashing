@@ -1,7 +1,9 @@
 #pragma once
 #include "hashable.hpp"
-
 #include <string>
+
+#define PRIMO 1000000007
+
 using namespace std;
 
 class Sensor: public Hashable<Sensor> {

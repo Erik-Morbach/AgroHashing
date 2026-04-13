@@ -63,11 +63,14 @@ void bench(int count) {
     runBenchmark("Chaining (Linked List) 101", LinkedHashTable<Sensor, 101>(), count);
     runBenchmark("Chaining (Linked List) 501", LinkedHashTable<Sensor, 501>(), count);
     runBenchmark("Chaining (Linked List) 1001", LinkedHashTable<Sensor, 1001>(), count);
+    runBenchmark("Chaining (Linked List) 10001", LinkedHashTable<Sensor, 10001>(), count);
 
     if(count <= 2003)
         runBenchmark("Open Addressing (Linear Probing) 2003", OpenHashTable<Sensor, 2003>(), count);
     if(count <= 5003)
         runBenchmark("Open Addressing (Linear Probing) 5003", OpenHashTable<Sensor, 5003>(), count);
+    if(count <= 10003)
+        runBenchmark("Open Addressing (Linear Probing) 10003", OpenHashTable<Sensor, 10003>(), count);
 }
 
 int main(int argc, char* argv[]) {
