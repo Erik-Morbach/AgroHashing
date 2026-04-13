@@ -1,10 +1,18 @@
 #include "sensorapp.hpp"
 #include <iostream>
 #include "linkedHashTable.hpp"
-    
-SensorApp::SensorApp() {
-    this->table = std::make_shared<LinkedHashTable<Sensor, 100>>();
+#include "openHashTable.hpp"
+
+SensorApp::SensorApp(TableMode mode) {
+    if (mode == TableMode::CHAINING) {
+        std::cout << "[Mode] Chaining (Linked List)" << std::endl;
+        this->table = std::make_shared<LinkedHashTable<Sensor, 100>>();
+    } else {
+        std::cout << "[Mode] Open Addressing (Linear Probing)" << std::endl;
+        this->table = std::make_shared<OpenHashTable<Sensor, 1009>>();
+    }
 }
+
 void SensorApp::registerSensor() {
     int iId;
     string strType, strLocation;
@@ -16,7 +24,6 @@ void SensorApp::registerSensor() {
     cin >> strLocation;
     Sensor s(iId, strType, strLocation);
     this->table->add(s);
-    
 }
 
 void SensorApp::updateReading() {
@@ -54,5 +61,4 @@ void SensorApp::displaySensors() {
     for(auto sensor : this->table->listAll()) {
         sensor->print();
     }
-
 }

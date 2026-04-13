@@ -1,9 +1,9 @@
 #include <iostream>
+#include <string>
 #include "sensorapp.hpp"
 
 using namespace std;
 
-// Print Menu
 void printMenu() {
     cout << "\n===== MENU =====" << endl;
     cout << "1 - Register Sensor" << endl;
@@ -15,9 +15,19 @@ void printMenu() {
     cout << "Choose an option: ";
 }
 
-// Main
-int main() {
-    SensorApp sensorApp;
+int main(int argc, char* argv[]) {
+    TableMode mode = TableMode::CHAINING;
+
+    for (int i = 1; i < argc; i++) {
+        string arg = argv[i];
+        if (arg == "--open" || arg == "-o") {
+            mode = TableMode::OPEN_ADDRESSING;
+        } else if (arg == "--chaining" || arg == "-c") {
+            mode = TableMode::CHAINING;
+        }
+    }
+
+    SensorApp sensorApp(mode);
     int iOption;
 
     do {
