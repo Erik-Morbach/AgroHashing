@@ -25,7 +25,7 @@ size_t getMemoryKB() {
 }
 
 template<typename Table>
-void runBenchmark(const string& name, Table& table, int count) {
+void runBenchmark(const string& name, Table&& table, int count) {
     cout << "=== " << name << " ===" << endl;
     cout << "Sensors: " << count << endl;
 
@@ -56,26 +56,18 @@ void runBenchmark(const string& name, Table& table, int count) {
     cout << endl;
 }
 
-void bench1000() {
+void bench(int count) {
     cout << "============================================================" << endl;
-    cout << "  1000 sensors | Chaining buckets=101 | Open slots=2003" << endl;
+    cout << "  " << count << " sensors | Chaining buckets=101,501,1001 | Open slots=2003, 5003" << endl;
     cout << "============================================================" << endl;
-    LinkedHashTable<Sensor, 101> chaining;
-    runBenchmark("Chaining (Linked List)", chaining, 1000);
+    runBenchmark("Chaining (Linked List) 101", LinkedHashTable<Sensor, 101>(), count);
+    runBenchmark("Chaining (Linked List) 501", LinkedHashTable<Sensor, 501>(), count);
+    runBenchmark("Chaining (Linked List) 1001", LinkedHashTable<Sensor, 1001>(), count);
 
-    OpenHashTable<Sensor, 2003> open;
-    runBenchmark("Open Addressing (Linear Probing)", open, 1000);
-}
-
-void bench5000() {
-    cout << "============================================================" << endl;
-    cout << "  5000 sensors | Chaining buckets=101 | Open slots=10007" << endl;
-    cout << "============================================================" << endl;
-    LinkedHashTable<Sensor, 101> chaining;
-    runBenchmark("Chaining (Linked List)", chaining, 5000);
-
-    OpenHashTable<Sensor, 10007> open;
-    runBenchmark("Open Addressing (Linear Probing)", open, 5000);
+    if(count <= 2003)
+        runBenchmark("Open Addressing (Linear Probing) 2003", OpenHashTable<Sensor, 2003>(), count);
+    if(count <= 5003)
+        runBenchmark("Open Addressing (Linear Probing) 5003", OpenHashTable<Sensor, 5003>(), count);
 }
 
 int main(int argc, char* argv[]) {
@@ -90,8 +82,8 @@ int main(int argc, char* argv[]) {
     cout << "Running benchmarks..." << endl;
     cout << "Note: transform logs are from existing instrumentation" << endl << endl;
 
-    if (count == 0 || count == 1000) bench1000();
-    if (count == 0 || count == 5000) bench5000();
+    if (count == 0) {bench(1000); bench(5000); }
+    else bench(count);
 
     return 0;
 }
