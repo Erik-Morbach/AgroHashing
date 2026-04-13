@@ -5,8 +5,8 @@ set -e
 mkdir -p build
 
 echo "Building..."
-g++ -std=c++17 -O2 -Isrc src/sensor.cpp src/main.cpp src/sensorapp.cpp -o build/Main
-g++ -std=c++17 -O2 -Isrc src/sensor.cpp src/benchmark.cpp -o build/Benchmark
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-O2" > /dev/null
+cmake --build build
 echo "Build OK"
 
 echo ""
