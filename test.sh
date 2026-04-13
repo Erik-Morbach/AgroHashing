@@ -2,11 +2,8 @@
 
 set -e
 
-mkdir -p build
-
 echo "Building..."
-g++ -std=c++17 -O2 -Isrc src/sensor.cpp src/main.cpp src/sensorapp.cpp -o build/Main
-g++ -std=c++17 -O2 -Isrc src/sensor.cpp src/benchmark.cpp -o build/Benchmark
+./build.sh
 echo "Build OK"
 
 echo ""
