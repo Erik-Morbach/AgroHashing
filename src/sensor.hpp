@@ -2,7 +2,7 @@
 #include "hashable.hpp"
 #include <string>
 
-#define PRIMO 1000000007
+#define PRIMO 1000000007LL
 
 using namespace std;
 
